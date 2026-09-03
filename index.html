@@ -10,7 +10,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,36 +20,37 @@
        DESIGN SYSTEM & CSS CUSTOM PROPERTIES
        ========================================================================== */
     :root {
-      /* Colors */
-      --bg-cream: #FAF8F5;
+      /* Refined Warm Palette */
+      --bg-cream: #F9F6F1;
       --bg-card: #FFFFFF;
-      --bg-card-alt: #F4F0EA;
-      --deep-charcoal: #1A1D20;
-      --bronze-accent: #C5A059;
-      --bronze-hover: #A8823B;
-      --bronze-light: rgba(197, 160, 89, 0.12);
-      --border-subtle: rgba(26, 29, 32, 0.08);
-      --border-bronze: rgba(197, 160, 89, 0.3);
-      --text-main: #2A2E33;
-      --text-muted: #686E77;
-      --glass-bg: rgba(250, 248, 245, 0.85);
+      --bg-card-alt: #F3EDE5;
+      --deep-charcoal: #1C1917;
+      --bronze-accent: #C9A96E;
+      --bronze-hover: #B08C4A;
+      --bronze-light: rgba(201, 169, 110, 0.12);
+      --border-subtle: rgba(28, 25, 23, 0.07);
+      --border-bronze: rgba(201, 169, 110, 0.3);
+      --text-main: #2A2520;
+      --text-muted: #6B6560;
+      --mid-stone: #E8E0D5;
+      --glass-bg: rgba(249, 246, 241, 0.88);
       --glass-border: rgba(255, 255, 255, 0.4);
 
       /* Fonts */
       --font-heading: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
       /* Radii */
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
       --radius-full: 9999px;
 
       /* Shadows */
       --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
       --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 24px 48px -12px rgba(26, 29, 32, 0.12);
-      --shadow-glow: 0 0 25px rgba(197, 160, 89, 0.25);
+      --shadow-lg: 0 24px 48px -12px rgba(28, 25, 23, 0.12);
+      --shadow-glow: 0 0 25px rgba(201, 169, 110, 0.3);
 
       /* Transitions */
       --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -57,7 +58,7 @@
       --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Reset & Base Settings */
+    /* Reset & Base */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -73,9 +74,10 @@
       background-color: var(--bg-cream);
       color: var(--text-main);
       font-family: var(--font-body);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     img {
@@ -96,7 +98,7 @@
       background: none;
     }
 
-    /* Container Utility */
+    /* Container */
     .container {
       width: 90%;
       max-width: 1280px;
@@ -105,7 +107,7 @@
 
     /* Section Spacing */
     .section {
-      padding: 100px 0;
+      padding: 104px 0;
       position: relative;
     }
 
@@ -118,9 +120,9 @@
       border-radius: var(--radius-full);
       background-color: var(--bronze-light);
       color: var(--bronze-hover);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 16px;
       border: 1px solid var(--border-bronze);
@@ -131,7 +133,7 @@
       font-size: clamp(2.2rem, 4vw, 3.4rem);
       font-weight: 600;
       color: var(--deep-charcoal);
-      line-height: 1.15;
+      line-height: 1.12;
       margin-bottom: 20px;
     }
 
@@ -143,60 +145,79 @@
 
     .section-desc {
       color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 640px;
+      font-size: 1.05rem;
+      max-width: 600px;
       line-height: 1.7;
     }
 
-    /* Buttons System */
+    /* ==========================================================================
+       BUTTONS SYSTEM — Consolidated CTA Strategy
+       ========================================================================== */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 14px 28px;
-      border-radius: var(--radius-full);
-      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 0.92rem;
       font-weight: 600;
-      transition: var(--transition-normal);
+      letter-spacing: 0.02em;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
 
+    /* Primary CTA — "Book Free Site Visit" */
     .btn-primary {
-      background-color: var(--deep-charcoal);
+      background-color: var(--bronze-accent);
       color: #FFFFFF;
-      border: 1px solid var(--deep-charcoal);
+      border: 2px solid var(--bronze-accent);
     }
 
     .btn-primary:hover {
-      background-color: var(--bronze-accent);
-      border-color: var(--bronze-accent);
+      background-color: var(--bronze-hover);
+      border-color: var(--bronze-hover);
       transform: translateY(-2px);
       box-shadow: var(--shadow-glow);
     }
 
+    /* Secondary CTA — "Chat on WhatsApp" / Ghost */
     .btn-secondary {
       background-color: transparent;
       color: var(--deep-charcoal);
-      border: 1px solid var(--border-subtle);
+      border: 2px solid var(--border-subtle);
     }
 
     .btn-secondary:hover {
       border-color: var(--bronze-accent);
       color: var(--bronze-hover);
-      background-color: #FFFFFF;
       transform: translateY(-2px);
     }
 
-    .btn-bronze {
-      background-color: var(--bronze-accent);
-      color: #FFFFFF;
-      border: 1px solid var(--bronze-accent);
+    /* Dark context CTA */
+    .btn-outline-gold {
+      background-color: transparent;
+      color: var(--bronze-accent);
+      border: 2px solid var(--bronze-accent);
     }
 
-    .btn-bronze:hover {
-      background-color: var(--bronze-hover);
+    .btn-outline-gold:hover {
+      background-color: var(--bronze-accent);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Charcoal CTA (nav, estimator) */
+    .btn-charcoal {
+      background-color: var(--deep-charcoal);
+      color: #FFFFFF;
+      border: 2px solid var(--deep-charcoal);
+    }
+
+    .btn-charcoal:hover {
+      background-color: var(--bronze-accent);
+      border-color: var(--bronze-accent);
       transform: translateY(-2px);
       box-shadow: var(--shadow-glow);
     }
@@ -216,9 +237,9 @@
 
     .header.scrolled {
       background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 14px 0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 12px 0;
       border-bottom: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-sm);
     }
@@ -240,7 +261,7 @@
       height: 42px;
       background: var(--deep-charcoal);
       color: var(--bronze-accent);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -265,9 +286,9 @@
     }
 
     .brand-subtitle {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       color: var(--bronze-hover);
       font-weight: 600;
     }
@@ -280,7 +301,7 @@
     }
 
     .nav-link {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
       color: var(--text-main);
       transition: var(--transition-fast);
@@ -317,7 +338,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--deep-charcoal);
     }
 
@@ -330,6 +351,60 @@
       font-size: 1.5rem;
       color: var(--deep-charcoal);
       cursor: pointer;
+      z-index: 1100;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      height: 100vh;
+      background: var(--deep-charcoal);
+      z-index: 1050;
+      padding: 100px 40px 40px 40px;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    .mobile-drawer a {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.15rem;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: var(--transition-fast);
+    }
+
+    .mobile-drawer a:hover {
+      color: var(--bronze-accent);
+    }
+
+    .mobile-drawer .drawer-cta {
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1040;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* ==========================================================================
@@ -341,7 +416,7 @@
       padding-bottom: 80px;
       display: flex;
       align-items: center;
-      background: radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at 75% 20%, rgba(201, 169, 110, 0.08) 0%, transparent 55%);
       overflow: hidden;
     }
 
@@ -357,6 +432,7 @@
       z-index: 2;
     }
 
+    /* Word-by-word hero animation */
     .hero-heading {
       font-family: var(--font-heading);
       font-size: clamp(2.8rem, 5vw, 4.5rem);
@@ -366,19 +442,39 @@
       margin-bottom: 24px;
     }
 
-    .hero-heading span {
+    .hero-heading .hero-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: wordFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-heading .hero-accent-line {
       display: block;
       color: var(--bronze-accent);
       font-style: italic;
       font-weight: 400;
     }
 
+    .hero-heading .hero-accent-line .hero-word {
+      color: var(--bronze-accent);
+    }
+
+    @keyframes wordFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .hero-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 36px;
-      max-width: 540px;
-      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 520px;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp 0.7s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .hero-buttons {
@@ -386,15 +482,30 @@
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 48px;
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.7s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .trust-metrics {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 48px;
       padding-top: 32px;
       border-top: 1px solid var(--border-subtle);
+      opacity: 0;
+      animation: fadeUp 0.7s 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .metric-item {
@@ -404,26 +515,28 @@
 
     .metric-number {
       font-family: var(--font-heading);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: var(--deep-charcoal);
       line-height: 1;
     }
 
-    .metric-number span {
+    .metric-number .counter-suffix {
       color: var(--bronze-accent);
     }
 
     .metric-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       color: var(--text-muted);
       margin-top: 4px;
     }
 
     .hero-visual {
       position: relative;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .main-hero-img-box {
@@ -431,18 +544,18 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       position: relative;
-      border: 1px solid var(--glass-border);
+      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .main-hero-img-box img {
       width: 100%;
       height: 520px;
       object-fit: cover;
-      transition: var(--transition-slow);
+      transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .main-hero-img-box:hover img {
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
 
     /* Floating Card */
@@ -450,7 +563,7 @@
       position: absolute;
       bottom: -30px;
       left: -30px;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(16px);
       padding: 20px 24px;
       border-radius: var(--radius-md);
@@ -461,6 +574,8 @@
       gap: 16px;
       z-index: 3;
       max-width: 280px;
+      opacity: 0;
+      animation: fadeUp 0.6s 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .card-icon-badge {
@@ -477,13 +592,13 @@
     }
 
     .card-info h4 {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--deep-charcoal);
     }
 
     .card-info p {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -493,7 +608,7 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 64px;
       align-items: center;
     }
 
@@ -536,19 +651,20 @@
 
     .feature-point i {
       color: var(--bronze-accent);
-      font-size: 1.1rem;
-      margin-top: 4px;
+      font-size: 1rem;
+      margin-top: 3px;
     }
 
     .feature-point h5 {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--deep-charcoal);
     }
 
     .feature-point p {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* ==========================================================================
@@ -557,21 +673,25 @@
     .services-header {
       text-align: center;
       max-width: 640px;
-      margin: 0 auto 60px auto;
+      margin: 0 auto 64px auto;
+    }
+
+    .services-header .section-desc {
+      margin: 0 auto;
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 24px;
     }
 
     .service-card {
       background-color: var(--bg-card);
       border-radius: var(--radius-md);
-      padding: 40px 32px;
+      padding: 36px 28px;
       border: 1px solid var(--border-subtle);
-      transition: var(--transition-normal);
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -579,55 +699,56 @@
     }
 
     .service-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-md);
       border-color: var(--border-bronze);
     }
 
     .service-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 14px;
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
       background: var(--bronze-light);
       color: var(--bronze-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 24px;
-      transition: var(--transition-fast);
+      transition: all 0.35s ease;
     }
 
     .service-card:hover .service-icon {
       background: var(--bronze-accent);
       color: #FFFFFF;
+      transform: scale(1.05);
     }
 
     .service-title {
       font-family: var(--font-heading);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: var(--deep-charcoal);
       margin-bottom: 12px;
     }
 
     .service-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
-      margin-bottom: 24px;
-      line-height: 1.6;
+      margin-bottom: 20px;
+      line-height: 1.65;
       flex-grow: 1;
     }
 
     .service-list {
       list-style: none;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       border-top: 1px dashed var(--border-subtle);
       padding-top: 16px;
     }
 
     .service-list li {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-main);
       margin-bottom: 8px;
       display: flex;
@@ -637,14 +758,14 @@
 
     .service-list li i {
       color: var(--bronze-accent);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
 
     .service-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--bronze-hover);
       transition: var(--transition-fast);
@@ -658,34 +779,53 @@
     /* ==========================================================================
        5. PORTFOLIO SHOWCASE
        ========================================================================== */
+    .portfolio-section {
+      background: var(--deep-charcoal);
+      padding: 104px 0;
+    }
+
+    .portfolio-section .subtitle-pill {
+      background: rgba(201, 169, 110, 0.15);
+      border-color: rgba(201, 169, 110, 0.3);
+    }
+
+    .portfolio-section .section-title {
+      color: #FFFFFF;
+    }
+
+    .portfolio-section .section-desc {
+      color: rgba(255,255,255,0.6);
+    }
+
     .portfolio-nav {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 40px;
+      gap: 10px;
+      margin-bottom: 48px;
       flex-wrap: wrap;
     }
 
     .filter-btn {
       padding: 10px 24px;
-      border-radius: var(--radius-full);
-      font-size: 0.9rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
       font-weight: 500;
-      color: var(--text-muted);
-      border: 1px solid var(--border-subtle);
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent;
       transition: var(--transition-fast);
     }
 
     .filter-btn.active, .filter-btn:hover {
-      background-color: var(--deep-charcoal);
+      background-color: var(--bronze-accent);
       color: #FFFFFF;
-      border-color: var(--deep-charcoal);
+      border-color: var(--bronze-accent);
     }
 
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
     .portfolio-card {
@@ -693,27 +833,27 @@
       overflow: hidden;
       position: relative;
       height: 360px;
-      box-shadow: var(--shadow-sm);
       cursor: pointer;
+      transition: opacity 0.35s ease;
     }
 
     .portfolio-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: var(--transition-slow);
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .portfolio-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(26, 29, 32, 0.95) 0%, rgba(26, 29, 32, 0.2) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(28, 25, 23, 0.95) 0%, rgba(28, 25, 23, 0.15) 55%, transparent 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 30px;
+      padding: 28px;
       opacity: 0;
-      transition: var(--transition-normal);
+      transition: opacity 0.4s ease;
     }
 
     .portfolio-card:hover img {
@@ -725,9 +865,9 @@
     }
 
     .portfolio-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       color: var(--bronze-accent);
       font-weight: 600;
       margin-bottom: 6px;
@@ -735,14 +875,14 @@
 
     .portfolio-title {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       color: #FFFFFF;
       font-weight: 600;
     }
 
     .portfolio-location {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.6);
       margin-top: 4px;
     }
 
@@ -750,7 +890,7 @@
     .lightbox-modal {
       position: fixed;
       inset: 0;
-      background: rgba(26, 29, 32, 0.92);
+      background: rgba(28, 25, 23, 0.92);
       backdrop-filter: blur(12px);
       z-index: 2000;
       display: none;
@@ -830,23 +970,23 @@
     .form-group-custom label {
       display: block;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--deep-charcoal);
       margin-bottom: 10px;
     }
 
     .choice-chips {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .chip {
       padding: 10px 20px;
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
       border: 1px solid var(--border-subtle);
       background: var(--bg-cream);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--text-main);
       cursor: pointer;
@@ -866,12 +1006,13 @@
     .range-slider-box input[type=range] {
       width: 100%;
       accent-color: var(--bronze-accent);
+      height: 6px;
     }
 
     .estimator-result-card {
       background: var(--bg-cream);
       border-radius: var(--radius-md);
-      padding: 36px;
+      padding: 40px;
       text-align: center;
       border: 1px dashed var(--bronze-accent);
     }
@@ -885,92 +1026,153 @@
     }
 
     .estimator-disclaimer {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       margin-top: 16px;
     }
 
     /* ==========================================================================
-       7. DESIGN PROCESS TIMELINE
+       7. DESIGN PROCESS — Horizontal Timeline
        ========================================================================== */
     .process-timeline {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 60px;
+      gap: 0;
+      margin-top: 64px;
       position: relative;
     }
 
-    .process-card {
+    /* Connecting line */
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--mid-stone);
+      z-index: 0;
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 0 16px;
+    }
+
+    .process-dot {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
       background: var(--bg-card);
-      border-radius: var(--radius-md);
-      padding: 32px 24px;
-      border: 1px solid var(--border-subtle);
-      position: relative;
-    }
-
-    .process-number {
+      border: 2px solid var(--mid-stone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-heading);
-      font-size: 2.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--bronze-accent);
-      opacity: 0.6;
-      line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    .process-step:hover .process-dot {
+      background: var(--bronze-accent);
+      color: #FFFFFF;
+      border-color: var(--bronze-accent);
+      transform: scale(1.1);
+      box-shadow: var(--shadow-glow);
     }
 
     .process-title {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--deep-charcoal);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .process-desc {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.6;
+      max-width: 220px;
     }
 
     /* ==========================================================================
-       8. TESTIMONIALS
+       8. TESTIMONIALS — Editorial Style with Large Quotes
        ========================================================================== */
+    .testimonials-section {
+      background: var(--bg-card-alt);
+    }
+
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 40px;
+      gap: 28px;
+      margin-top: 48px;
     }
 
     .testimonial-card {
       background: var(--bg-card);
       border-radius: var(--radius-md);
-      padding: 32px;
+      padding: 36px 32px;
       border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-bronze);
+    }
+
+    /* Large decorative quote mark */
+    .testimonial-card::before {
+      content: '"';
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--bronze-accent);
+      opacity: 0.2;
+      position: absolute;
+      top: 16px;
+      left: 28px;
+      pointer-events: none;
     }
 
     .stars {
       color: var(--bronze-accent);
       margin-bottom: 16px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      display: flex;
+      gap: 3px;
     }
 
     .quote-text {
       font-size: 0.95rem;
       color: var(--text-main);
       font-style: italic;
-      line-height: 1.7;
+      line-height: 1.75;
       margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
     }
 
     .client-info {
       display: flex;
       align-items: center;
       gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
     }
 
     .client-avatar {
@@ -983,16 +1185,17 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
+      font-size: 0.85rem;
     }
 
     .client-meta h5 {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--deep-charcoal);
     }
 
     .client-meta p {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -1002,7 +1205,7 @@
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
+      gap: 48px;
     }
 
     .contact-info-box {
@@ -1016,21 +1219,22 @@
     }
 
     .contact-info-box .subtitle-pill {
-      background: rgba(197, 160, 89, 0.2);
-      border-color: rgba(197, 160, 89, 0.4);
+      background: rgba(201, 169, 110, 0.15);
+      border-color: rgba(201, 169, 110, 0.3);
     }
 
     .contact-info-box h3 {
       font-family: var(--font-heading);
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 600;
       color: #FFFFFF;
       margin-bottom: 16px;
     }
 
-    .contact-info-box p {
-      color: rgba(255, 255, 255, 0.7);
+    .contact-info-box > div:first-child > p {
+      color: rgba(255, 255, 255, 0.65);
       margin-bottom: 36px;
+      font-size: 0.95rem;
     }
 
     .contact-details-list {
@@ -1047,19 +1251,19 @@
 
     .detail-item i {
       color: var(--bronze-accent);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-top: 4px;
     }
 
     .detail-item h5 {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #FFFFFF;
     }
 
     .detail-item p {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.65);
       margin-bottom: 0;
     }
 
@@ -1083,7 +1287,7 @@
 
     .form-group label {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--deep-charcoal);
       margin-bottom: 8px;
@@ -1096,7 +1300,7 @@
       border: 1px solid var(--border-subtle);
       background: var(--bg-cream);
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-main);
       transition: var(--transition-fast);
     }
@@ -1111,6 +1315,44 @@
     textarea.form-control {
       resize: vertical;
       min-height: 120px;
+    }
+
+    /* Form success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .form-success.active {
+      display: block;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .form-success .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--bronze-light);
+      color: var(--bronze-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 24px auto;
+    }
+
+    .form-success h4 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--deep-charcoal);
+      margin-bottom: 8px;
+    }
+
+    .form-success p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
     /* Toast notification */
@@ -1143,9 +1385,9 @@
        ========================================================================== */
     .footer {
       background: var(--deep-charcoal);
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.65);
       padding: 80px 0 30px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .footer-grid {
@@ -1161,13 +1403,13 @@
 
     .footer-brand p {
       margin-top: 16px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       line-height: 1.7;
     }
 
     .footer-col h4 {
       color: #FFFFFF;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 20px;
     }
@@ -1181,6 +1423,7 @@
     }
 
     .footer-links a {
+      font-size: 0.88rem;
       transition: var(--transition-fast);
     }
 
@@ -1190,24 +1433,24 @@
 
     .footer-bottom {
       padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
 
     .social-links {
       display: flex;
-      gap: 16px;
+      gap: 12px;
     }
 
     .social-icon {
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      color: #FFF;
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255,255,255,0.7);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1216,6 +1459,7 @@
 
     .social-icon:hover {
       background: var(--bronze-accent);
+      color: #FFFFFF;
     }
 
     /* Floating WhatsApp Button */
@@ -1223,29 +1467,33 @@
       position: fixed;
       bottom: 30px;
       left: 30px;
-      width: 54px;
-      height: 54px;
+      width: 56px;
+      height: 56px;
       background: #25D366;
       color: #FFF;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: var(--shadow-lg);
+      font-size: 1.7rem;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
       z-index: 999;
       transition: var(--transition-fast);
     }
 
     .whatsapp-float:hover {
       transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
     }
 
-    /* Scroll Reveal Animation Utility */
+    /* ==========================================================================
+       SCROLL REVEAL ANIMATION SYSTEM
+       ========================================================================== */
     .reveal-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: var(--transition-slow);
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal-up.active {
@@ -1253,7 +1501,36 @@
       transform: translateY(0);
     }
 
-    /* Responsive Breakpoints */
+    /* Staggered children */
+    .stagger-children .reveal-up:nth-child(1) { transition-delay: 0.05s; }
+    .stagger-children .reveal-up:nth-child(2) { transition-delay: 0.12s; }
+    .stagger-children .reveal-up:nth-child(3) { transition-delay: 0.19s; }
+    .stagger-children .reveal-up:nth-child(4) { transition-delay: 0.26s; }
+    .stagger-children .reveal-up:nth-child(5) { transition-delay: 0.33s; }
+    .stagger-children .reveal-up:nth-child(6) { transition-delay: 0.40s; }
+
+    /* ==========================================================================
+       ACCESSIBILITY — Reduced Motion
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal-up {
+        opacity: 1;
+        transform: none;
+      }
+      .hero-heading .hero-word {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
     @media (max-width: 1024px) {
       .hero-grid, .about-grid, .estimator-grid, .contact-grid {
         grid-template-columns: 1fr;
@@ -1264,6 +1541,10 @@
       }
       .process-timeline {
         grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+      .process-timeline::before {
+        display: none;
       }
       .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -1271,14 +1552,24 @@
     }
 
     @media (max-width: 768px) {
+      .section {
+        padding: 72px 0;
+      }
       .nav-menu {
+        display: none;
+      }
+      .phone-link {
         display: none;
       }
       .mobile-toggle {
         display: block;
       }
-      .services-grid, .portfolio-grid, .testimonials-grid, .process-timeline {
+      .services-grid, .portfolio-grid, .testimonials-grid {
         grid-template-columns: 1fr;
+      }
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
       .footer-grid {
         grid-template-columns: 1fr;
@@ -1292,6 +1583,32 @@
       .hero-floating-card {
         bottom: 10px;
         left: 10px;
+      }
+      .hero {
+        padding-top: 120px;
+      }
+      .hero-heading {
+        font-size: clamp(2.2rem, 8vw, 3rem);
+      }
+      .trust-metrics {
+        gap: 24px;
+      }
+      .metric-number {
+        font-size: 1.8rem;
+      }
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+      .contact-info-box {
+        padding: 32px;
+      }
+      .contact-form-card {
+        padding: 32px;
       }
     }
   </style>
@@ -1326,7 +1643,7 @@
             <i class="fa-solid fa-phone"></i>
             <span>+91 84013 46916</span>
           </a>
-          <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">Book Visit</a>
+          <a href="#contact" class="btn btn-charcoal" style="padding: 10px 22px; font-size: 0.82rem;">Book Free Visit</a>
           <div class="mobile-toggle" id="mobileToggle">
             <i class="fa-solid fa-bars"></i>
           </div>
@@ -1335,47 +1652,61 @@
     </div>
   </header>
 
+  <!-- Mobile Drawer -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <nav class="mobile-drawer" id="mobileDrawer">
+    <a href="#about" class="drawer-link">Studio Story</a>
+    <a href="#services" class="drawer-link">Services</a>
+    <a href="#portfolio" class="drawer-link">Portfolio</a>
+    <a href="#estimator" class="drawer-link">Budget Estimator</a>
+    <a href="#process" class="drawer-link">Our Process</a>
+    <a href="#contact" class="drawer-link">Contact</a>
+    <div class="drawer-cta">
+      <a href="#contact" class="btn btn-primary" style="width: 100%;">Book Free Site Visit</a>
+    </div>
+  </nav>
+
   <!-- ==========================================================================
        2. HERO SECTION
        ========================================================================== -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-grid">
-        <div class="hero-content reveal-up">
-          <div class="subtitle-pill">
+        <div class="hero-content">
+          <div class="subtitle-pill" style="opacity:0; animation: fadeUp 0.5s 0.2s forwards;">
             <i class="fa-solid fa-gem"></i> Raipur's Premier Spatial Architects
           </div>
-          <h1 class="hero-heading">
-            Where Blank Walls Become <span>Timeless Stories</span>
+          <h1 class="hero-heading" id="heroHeading">
+            Where Blank Walls Become <span class="hero-accent-line">Timeless Stories</span>
           </h1>
           <p class="hero-subtitle">
-            Hanu Interio blends architectural wall coatings, PVC marble paneling, false ceilings, and ergonomic modularjoinery to craft residential & commercial interiors across Chhattisgarh.
+            Hanu Interio blends architectural wall coatings, PVC marble paneling, false ceilings, and ergonomic modular joinery to craft residential & commercial interiors across Chhattisgarh.
           </p>
           <div class="hero-buttons">
-            <a href="#portfolio" class="btn btn-primary">
-              Explore Projects <i class="fa-solid fa-arrow-right"></i>
+            <a href="#contact" class="btn btn-primary">
+              Book Free Site Visit <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="#estimator" class="btn btn-secondary">
-              Calculate Budget <i class="fa-solid fa-calculator"></i>
+            <a href="https://wa.me/918401346916?text=Hi%20Hanu%20Interio,%20I%20would%20like%20to%20book%20a%20free%20interior%20consultation." target="_blank" class="btn btn-secondary">
+              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
             </a>
           </div>
           <div class="trust-metrics">
             <div class="metric-item">
-              <div class="metric-number">150<span>+</span></div>
+              <div class="metric-number"><span class="counter" data-target="150">0</span><span class="counter-suffix">+</span></div>
               <div class="metric-label">Spaces Transformed</div>
             </div>
             <div class="metric-item">
-              <div class="metric-number">4.9<span>★</span></div>
-              <div class="metric-label">Justdial Customer Rating</div>
+              <div class="metric-number"><span class="counter" data-target="4.9" data-decimal="true">0</span><span class="counter-suffix">★</span></div>
+              <div class="metric-label">JustDial Rating</div>
             </div>
             <div class="metric-item">
-              <div class="metric-number">100<span>%</span></div>
+              <div class="metric-number"><span class="counter" data-target="100">0</span><span class="counter-suffix">%</span></div>
               <div class="metric-label">Bespoke Fitment</div>
             </div>
           </div>
         </div>
 
-        <div class="hero-visual reveal-up" style="transition-delay: 0.2s;">
+        <div class="hero-visual">
           <div class="main-hero-img-box">
             <img src="./assets/hero.png" alt="Hanu Interio Modern Living Room Interior">
           </div>
@@ -1403,7 +1734,7 @@
           <img src="./assets/wall_decor.png" alt="Hanu Interio Wall Artistry" class="about-img-primary">
           <img src="./assets/bedroom.png" alt="Hanu Interio Bedroom Suite" class="about-img-secondary">
         </div>
-        <div class="about-content reveal-up" style="transition-delay: 0.2s;">
+        <div class="about-content reveal-up">
           <div class="subtitle-pill">Crafted with Purpose</div>
           <h2 class="section-title">Rooted in Raipur, <span>Inspired by Contemporary Living</span></h2>
           <p class="section-desc">
@@ -1457,7 +1788,7 @@
         </p>
       </div>
 
-      <div class="services-grid">
+      <div class="services-grid stagger-children">
         <div class="service-card reveal-up">
           <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
           <h3 class="service-title">Designer Wallpapers</h3>
@@ -1467,10 +1798,10 @@
             <li><i class="fa-solid fa-chevron-right"></i> Moisture-Resistant Finishes</li>
             <li><i class="fa-solid fa-chevron-right"></i> Seamless Professional Fitting</li>
           </ul>
-          <a href="#contact" class="service-link">Inquire Wallpaper Catalogue <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="service-link">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <div class="service-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="service-card reveal-up">
           <div class="service-icon"><i class="fa-solid fa-square-full"></i></div>
           <h3 class="service-title">PVC Marble & Louvers</h3>
           <p class="service-desc">High-gloss waterproof PVC marble sheets and timber-feel fluted louvers that transform feature TV walls instantly.</p>
@@ -1479,10 +1810,10 @@
             <li><i class="fa-solid fa-chevron-right"></i> Italian Marble Look</li>
             <li><i class="fa-solid fa-chevron-right"></i> Acoustic Fluted Slat Wall</li>
           </ul>
-          <a href="#contact" class="service-link">Explore Panel Finishes <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="service-link">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <div class="service-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="service-card reveal-up">
           <div class="service-icon"><i class="fa-solid fa-lightbulb"></i></div>
           <h3 class="service-title">False Ceiling & Lighting</h3>
           <p class="service-desc">Suspended gypsum board false ceilings integrated with warm cove LEDs, magnetic tracks, and architectural spotlights.</p>
@@ -1491,7 +1822,7 @@
             <li><i class="fa-solid fa-chevron-right"></i> Magnetic Track Light System</li>
             <li><i class="fa-solid fa-chevron-right"></i> Gypsum & Wooden Raft Accents</li>
           </ul>
-          <a href="#contact" class="service-link">Book Ceiling Consultation <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="service-link">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card reveal-up">
@@ -1503,10 +1834,10 @@
             <li><i class="fa-solid fa-chevron-right"></i> Quartz Countertop Integration</li>
             <li><i class="fa-solid fa-chevron-right"></i> Modular Pantry Pullouts</li>
           </ul>
-          <a href="#contact" class="service-link">Plan Your Kitchen <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="service-link">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <div class="service-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="service-card reveal-up">
           <div class="service-icon"><i class="fa-solid fa-bed"></i></div>
           <h3 class="service-title">Master Bedroom Suites</h3>
           <p class="service-desc">Custom headboard backdrops, floor-to-ceiling sliding glass wardrobes, and ambient bedside lighting layout.</p>
@@ -1515,10 +1846,10 @@
             <li><i class="fa-solid fa-chevron-right"></i> Upholstered Fabric Accent Walls</li>
             <li><i class="fa-solid fa-chevron-right"></i> Vanity & Dressing Units</li>
           </ul>
-          <a href="#contact" class="service-link">View Suite Options <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="service-link">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
-        <div class="service-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="service-card reveal-up">
           <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
           <h3 class="service-title">Commercial & Studio Interior</h3>
           <p class="service-desc">Executive office reception desks, boutique retail display walls, and hospitality lounges that reflect brand prestige.</p>
@@ -1527,21 +1858,21 @@
             <li><i class="fa-solid fa-chevron-right"></i> Acoustic Conference Rooms</li>
             <li><i class="fa-solid fa-chevron-right"></i> Low Maintenance Surface Panel</li>
           </ul>
-          <a href="#contact" class="service-link">Commercial Inquiry <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="service-link">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       5. PORTFOLIO SHOWCASE
+       5. PORTFOLIO SHOWCASE — Dark Background
        ========================================================================== -->
-  <section class="section" id="portfolio">
+  <section class="portfolio-section" id="portfolio">
     <div class="container">
       <div class="services-header reveal-up">
         <div class="subtitle-pill">Portfolio & Proof of Work</div>
         <h2 class="section-title">Selected Works Across <span>Raipur & Chhattisgarh</span></h2>
-        <p class="section-desc">Take a glance at our recent transformations—from luxury 3BHK residences on VIP Road to boutique spaces at Shankar Nagar.</p>
+        <p class="section-desc">Take a glance at our recent transformations — from luxury 3BHK residences on VIP Road to boutique spaces at Shankar Nagar.</p>
       </div>
 
       <div class="portfolio-nav reveal-up">
@@ -1553,7 +1884,7 @@
         <button class="filter-btn" data-filter="commercial">Commercial</button>
       </div>
 
-      <div class="portfolio-grid">
+      <div class="portfolio-grid stagger-children">
         <div class="portfolio-card reveal-up" data-category="living">
           <img src="./assets/hero.png" alt="VIP Road Villa Living Room">
           <div class="portfolio-overlay">
@@ -1563,7 +1894,7 @@
           </div>
         </div>
 
-        <div class="portfolio-card reveal-up" data-category="kitchen" style="transition-delay: 0.1s;">
+        <div class="portfolio-card reveal-up" data-category="kitchen">
           <img src="./assets/kitchen.png" alt="Shankar Nagar Modular Kitchen">
           <div class="portfolio-overlay">
             <span class="portfolio-tag">Modular Kitchen</span>
@@ -1572,7 +1903,7 @@
           </div>
         </div>
 
-        <div class="portfolio-card reveal-up" data-category="wall" style="transition-delay: 0.2s;">
+        <div class="portfolio-card reveal-up" data-category="wall">
           <img src="./assets/wall_decor.png" alt="Chouhan Town Feature Wall">
           <div class="portfolio-overlay">
             <span class="portfolio-tag">Wall Architecture</span>
@@ -1590,7 +1921,7 @@
           </div>
         </div>
 
-        <div class="portfolio-card reveal-up" data-category="bedroom" style="transition-delay: 0.1s;">
+        <div class="portfolio-card reveal-up" data-category="bedroom">
           <img src="./assets/bedroom.png" alt="Sadar Bazaar Master Suite">
           <div class="portfolio-overlay">
             <span class="portfolio-tag">Bedroom</span>
@@ -1599,7 +1930,7 @@
           </div>
         </div>
 
-        <div class="portfolio-card reveal-up" data-category="commercial" style="transition-delay: 0.2s;">
+        <div class="portfolio-card reveal-up" data-category="commercial">
           <img src="./assets/commercial.png" alt="Tatibandh Executive Office">
           <div class="portfolio-overlay">
             <span class="portfolio-tag">Commercial</span>
@@ -1669,11 +2000,11 @@
 
           <div>
             <div class="estimator-result-card">
-              <h4 style="font-size: 1.1rem; color: var(--deep-charcoal); font-weight:600;">Estimated Project Investment</h4>
+              <h4 style="font-size: 1.05rem; color: var(--deep-charcoal); font-weight:600;">Estimated Project Investment</h4>
               <div class="estimate-value" id="estimateOutput">₹ 4.8 - 6.2 Lakhs</div>
-              <p style="font-size: 0.9rem; color: var(--text-main); font-weight:500;">Includes Material, Installation & 3D Spatial Supervision</p>
+              <p style="font-size: 0.88rem; color: var(--text-main); font-weight:500;">Includes Material, Installation & 3D Spatial Supervision</p>
               <div style="margin-top: 24px;">
-                <a href="#contact" class="btn btn-bronze" style="width: 100%;">
+                <a href="#contact" class="btn btn-primary" style="width: 100%;">
                   Lock In This Quote <i class="fa-solid fa-lock"></i>
                 </a>
               </div>
@@ -1688,7 +2019,7 @@
   </section>
 
   <!-- ==========================================================================
-       7. DESIGN PROCESS TIMELINE
+       7. DESIGN PROCESS — Horizontal Timeline
        ========================================================================== -->
   <section class="section" id="process">
     <div class="container">
@@ -1698,27 +2029,27 @@
         <p class="section-desc">Our streamlined 4-step workflow ensures zero surprises, strict deadline tracking, and pristine craftsmanship.</p>
       </div>
 
-      <div class="process-timeline">
-        <div class="process-card reveal-up">
-          <div class="process-number">01</div>
+      <div class="process-timeline stagger-children">
+        <div class="process-step reveal-up">
+          <div class="process-dot">01</div>
           <h4 class="process-title">Site Measurement</h4>
           <p class="process-desc">Our lead designer visits your site in Raipur to measure dimensions and study light & ventilation flow.</p>
         </div>
 
-        <div class="process-card reveal-up" style="transition-delay: 0.1s;">
-          <div class="process-number">02</div>
+        <div class="process-step reveal-up">
+          <div class="process-dot">02</div>
           <h4 class="process-title">3D Visualization</h4>
           <p class="process-desc">We generate photorealistic 3D renders of your living room, kitchen & false ceiling before work begins.</p>
         </div>
 
-        <div class="process-card reveal-up" style="transition-delay: 0.2s;">
-          <div class="process-number">03</div>
+        <div class="process-step reveal-up">
+          <div class="process-dot">03</div>
           <h4 class="process-title">Material Curation</h4>
           <p class="process-desc">Select wallpapers, PVC marble sheets, acrylic laminates, and hardware at our Raipura Chowk studio.</p>
         </div>
 
-        <div class="process-card reveal-up" style="transition-delay: 0.3s;">
-          <div class="process-number">04</div>
+        <div class="process-step reveal-up">
+          <div class="process-dot">04</div>
           <h4 class="process-title">Turnkey Handover</h4>
           <p class="process-desc">Our master technicians complete fitting, cove light wiring, and cleaning for a seamless move-in.</p>
         </div>
@@ -1727,9 +2058,9 @@
   </section>
 
   <!-- ==========================================================================
-       8. TESTIMONIALS
+       8. TESTIMONIALS — Editorial Style
        ========================================================================== -->
-  <section class="section" style="background-color: var(--bg-card-alt);" id="testimonials">
+  <section class="section testimonials-section" id="testimonials">
     <div class="container">
       <div class="services-header reveal-up">
         <div class="subtitle-pill">Client Testimonials</div>
@@ -1737,7 +2068,7 @@
         <p class="section-desc">Read real experiences from families who transformed their living spaces with Hanu Interio.</p>
       </div>
 
-      <div class="testimonials-grid">
+      <div class="testimonials-grid stagger-children">
         <div class="testimonial-card reveal-up">
           <div>
             <div class="stars">
@@ -1756,7 +2087,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card reveal-up" style="transition-delay: 0.1s;">
+        <div class="testimonial-card reveal-up">
           <div>
             <div class="stars">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1774,7 +2105,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="testimonial-card reveal-up">
           <div>
             <div class="stars">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1835,13 +2166,13 @@
           </div>
 
           <div style="margin-top: 36px;">
-            <a href="https://wa.me/918401346916?text=Hi%20Hanu%20Interio,%20I%20would%20like%20to%20book%20a%20free%20interior%20consultation." target="_blank" class="btn btn-bronze" style="width: 100%;">
+            <a href="https://wa.me/918401346916?text=Hi%20Hanu%20Interio,%20I%20would%20like%20to%20book%20a%20free%20interior%20consultation." target="_blank" class="btn btn-outline-gold" style="width: 100%;">
               <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp Now
             </a>
           </div>
         </div>
 
-        <div class="contact-form-card reveal-up" style="transition-delay: 0.2s;">
+        <div class="contact-form-card reveal-up">
           <h3 class="section-title" style="font-size: 2rem; margin-bottom: 24px;">Request <span>Free Site Visit</span></h3>
           <form id="contactForm">
             <div class="form-row">
@@ -1878,9 +2209,16 @@
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">
-              Submit Consultation Request <i class="fa-solid fa-paper-plane"></i>
+              Book Free Site Visit <i class="fa-solid fa-paper-plane"></i>
             </button>
           </form>
+
+          <!-- Success state -->
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h4>Request Submitted!</h4>
+            <p>The Hanu Interio team will call you within 2 hours to schedule your free site visit.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1890,8 +2228,8 @@
   <div class="toast" id="toast">
     <i class="fa-solid fa-circle-check" style="color: var(--bronze-accent); font-size: 1.4rem;"></i>
     <div>
-      <h5 style="font-size: 0.95rem; font-weight:600;">Request Submitted!</h5>
-      <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">The Hanu Interio team will call you within 2 hours.</p>
+      <h5 style="font-size: 0.92rem; font-weight:600;">Request Submitted!</h5>
+      <p style="font-size: 0.78rem; color: rgba(255,255,255,0.7);">The Hanu Interio team will call you within 2 hours.</p>
     </div>
   </div>
 
@@ -1943,12 +2281,12 @@
 
         <div class="footer-col">
           <h4>Contact Studio</h4>
-          <p style="font-size: 0.88rem; margin-bottom: 12px;">Raipura Chowk, Mahadev Ghat Road, Raipura, Raipur 492013</p>
-          <p style="font-size: 0.88rem; margin-bottom: 16px;">Phone: +91 84013 46916</p>
+          <p style="font-size: 0.85rem; margin-bottom: 12px;">Raipura Chowk, Mahadev Ghat Road, Raipura, Raipur 492013</p>
+          <p style="font-size: 0.85rem; margin-bottom: 16px;">Phone: +91 84013 46916</p>
           <div class="social-links">
-            <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://wa.me/918401346916" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="tel:+918401346916" class="social-icon" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://maps.google.com/?q=Hanu+Interio+Raipur" target="_blank" class="social-icon" aria-label="Location"><i class="fa-solid fa-location-dot"></i></a>
           </div>
         </div>
       </div>
@@ -1965,21 +2303,38 @@
        ========================================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Header Scroll Blur Effect
+      // 1. Header Scroll Effect
       const header = document.getElementById('header');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 50);
       });
 
-      // 2. IntersectionObserver Scroll Reveal Animations
+      // 2. Mobile Drawer Navigation
+      const mobileToggle = document.getElementById('mobileToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileOverlay = document.getElementById('mobileOverlay');
+      const drawerLinks = mobileDrawer.querySelectorAll('a');
+
+      function toggleDrawer() {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileOverlay.classList.toggle('active', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        mobileToggle.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+      }
+
+      mobileToggle.addEventListener('click', toggleDrawer);
+      mobileOverlay.addEventListener('click', toggleDrawer);
+      drawerLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (mobileDrawer.classList.contains('open')) toggleDrawer();
+        });
+      });
+
+      // 3. IntersectionObserver Scroll Reveal with Stagger
       const revealElements = document.querySelectorAll('.reveal-up');
       const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
       };
 
       const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1993,7 +2348,79 @@
 
       revealElements.forEach(el => revealObserver.observe(el));
 
-      // 3. Portfolio Filtering Logic
+      // 4. Hero Word-by-Word Animation
+      const heroHeading = document.getElementById('heroHeading');
+      if (heroHeading) {
+        const originalHTML = heroHeading.innerHTML;
+        // Process main text and accent line separately
+        const parts = originalHTML.split(/<span class="hero-accent-line">/);
+        let wordIndex = 0;
+        let newHTML = '';
+
+        // Process first part (before accent line)
+        const words1 = parts[0].trim().split(/\s+/);
+        words1.forEach(word => {
+          const delay = 0.3 + wordIndex * 0.1;
+          newHTML += `<span class="hero-word" style="animation-delay:${delay}s">${word}</span> `;
+          wordIndex++;
+        });
+
+        // Process accent line
+        if (parts[1]) {
+          const accentText = parts[1].replace('</span>', '');
+          const words2 = accentText.trim().split(/\s+/);
+          newHTML += '<span class="hero-accent-line">';
+          words2.forEach(word => {
+            const delay = 0.3 + wordIndex * 0.1;
+            newHTML += `<span class="hero-word" style="animation-delay:${delay}s">${word}</span> `;
+            wordIndex++;
+          });
+          newHTML += '</span>';
+        }
+
+        heroHeading.innerHTML = newHTML;
+      }
+
+      // 5. Animated Stat Counters
+      const counters = document.querySelectorAll('.counter');
+      let countersDone = false;
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countersDone) {
+            countersDone = true;
+            counters.forEach(counter => {
+              const target = parseFloat(counter.dataset.target);
+              const isDecimal = counter.dataset.decimal === 'true';
+              const duration = 1600;
+              const start = performance.now();
+
+              function updateCounter(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = target * eased;
+
+                counter.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+
+                if (progress < 1) {
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  counter.textContent = isDecimal ? target.toFixed(1) : target;
+                }
+              }
+
+              requestAnimationFrame(updateCounter);
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const metricsSection = document.querySelector('.trust-metrics');
+      if (metricsSection) counterObserver.observe(metricsSection);
+
+      // 6. Portfolio Filtering Logic
       const filterBtns = document.querySelectorAll('.filter-btn');
       const portfolioCards = document.querySelectorAll('.portfolio-card');
 
@@ -2011,13 +2438,13 @@
               setTimeout(() => card.style.opacity = '1', 50);
             } else {
               card.style.opacity = '0';
-              setTimeout(() => card.style.display = 'none', 300);
+              setTimeout(() => card.style.display = 'none', 350);
             }
           });
         });
       });
 
-      // 4. Portfolio Lightbox Viewer
+      // 7. Portfolio Lightbox Viewer
       const lightboxModal = document.getElementById('lightboxModal');
       const lightboxClose = document.getElementById('lightboxClose');
       const lightboxImg = document.getElementById('lightboxImg');
@@ -2035,20 +2462,23 @@
           modalTitle.textContent = title;
 
           lightboxModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
         });
       });
 
       lightboxClose.addEventListener('click', () => {
         lightboxModal.classList.remove('active');
+        document.body.style.overflow = '';
       });
 
       lightboxModal.addEventListener('click', (e) => {
         if (e.target === lightboxModal) {
           lightboxModal.classList.remove('active');
+          document.body.style.overflow = '';
         }
       });
 
-      // 5. Interactive Budget Estimator Calculator
+      // 8. Interactive Budget Estimator Calculator
       const propertyChips = document.querySelectorAll('#propertyChips .chip');
       const finishChips = document.querySelectorAll('#finishChips .chip');
       const areaSlider = document.getElementById('areaSlider');
@@ -2083,13 +2513,12 @@
 
       function calculateEstimate() {
         const area = Number(areaSlider.value);
-        let ratePerSqFt = 400; // Base standard
+        let ratePerSqFt = 400;
 
         if (selectedFinish === 'standard') ratePerSqFt = 350;
         if (selectedFinish === 'premium') ratePerSqFt = 520;
         if (selectedFinish === 'luxury') ratePerSqFt = 750;
 
-        // Multiply by property complexity factor
         let factor = 1.0;
         if (selectedProperty === '3bhk') factor = 1.1;
         if (selectedProperty === 'villa') factor = 1.25;
@@ -2102,21 +2531,43 @@
         estimateOutput.textContent = `₹ ${minLakhs} - ${maxLakhs} Lakhs`;
       }
 
-      // Initialize calculator
       calculateEstimate();
 
-      // 6. Contact Form Submission Toast Handler
+      // 9. Contact Form with Success State
       const contactForm = document.getElementById('contactForm');
+      const formSuccess = document.getElementById('formSuccess');
       const toast = document.getElementById('toast');
 
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        toast.classList.add('show');
-        contactForm.reset();
+
+        // Fade out form, show success
+        contactForm.style.opacity = '0';
+        contactForm.style.transition = 'opacity 0.4s ease';
 
         setTimeout(() => {
+          contactForm.style.display = 'none';
+          formSuccess.classList.add('active');
+        }, 400);
+
+        // Also show toast
+        toast.classList.add('show');
+        setTimeout(() => {
           toast.classList.remove('show');
-        }, 4000);
+        }, 4500);
+      });
+
+      // 10. Keyboard: Escape to close lightbox/drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (lightboxModal.classList.contains('active')) {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+          if (mobileDrawer.classList.contains('open')) {
+            toggleDrawer();
+          }
+        }
       });
     });
   </script>
