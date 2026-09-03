@@ -98,16 +98,15 @@
       background: none;
     }
 
-    /* Container */
+    /* Scalable Container - Fixes 100% Zoom / 16" Screen scaling */
     .container {
-      width: 90%;
-      max-width: 1280px;
+      width: min(92%, 1280px);
       margin: 0 auto;
     }
 
-    /* Section Spacing */
+    /* Fluid Section Spacing */
     .section {
-      padding: 104px 0;
+      padding: clamp(64px, 7vw, 100px) 0;
       position: relative;
     }
 
@@ -130,7 +129,7 @@
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
       font-weight: 600;
       color: var(--deep-charcoal);
       line-height: 1.12;
@@ -145,7 +144,7 @@
 
     .section-desc {
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
       max-width: 600px;
       line-height: 1.7;
     }
@@ -158,14 +157,15 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 14px 32px;
+      padding: 14px 28px;
       border-radius: 4px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 0.02em;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
+      white-space: nowrap;
     }
 
     /* Primary CTA — "Book Free Site Visit" */
@@ -208,7 +208,7 @@
       transform: translateY(-2px);
     }
 
-    /* Charcoal CTA (nav, estimator) */
+    /* Charcoal CTA */
     .btn-charcoal {
       background-color: var(--deep-charcoal);
       color: #FFFFFF;
@@ -232,7 +232,7 @@
       width: 100%;
       z-index: 1000;
       transition: var(--transition-normal);
-      padding: 20px 0;
+      padding: 18px 0;
     }
 
     .header.scrolled {
@@ -248,17 +248,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-shrink: 0;
     }
 
     .logo-mark {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       background: var(--deep-charcoal);
       color: var(--bronze-accent);
       border-radius: 8px;
@@ -267,7 +269,7 @@
       justify-content: center;
       font-family: var(--font-heading);
       font-weight: 700;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       border: 1px solid var(--border-bronze);
     }
 
@@ -278,7 +280,7 @@
 
     .brand-name {
       font-family: var(--font-heading);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       color: var(--deep-charcoal);
@@ -286,9 +288,9 @@
     }
 
     .brand-subtitle {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       color: var(--bronze-hover);
       font-weight: 600;
     }
@@ -296,16 +298,17 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: clamp(16px, 2.2vw, 32px);
       list-style: none;
     }
 
     .nav-link {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--text-main);
       transition: var(--transition-fast);
       position: relative;
+      white-space: nowrap;
     }
 
     .nav-link::after {
@@ -331,6 +334,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      flex-shrink: 0;
     }
 
     .phone-link {
@@ -338,8 +342,9 @@
       align-items: center;
       gap: 8px;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--deep-charcoal);
+      white-space: nowrap;
     }
 
     .phone-link i {
@@ -348,7 +353,7 @@
 
     .mobile-toggle {
       display: none;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--deep-charcoal);
       cursor: pointer;
       z-index: 1100;
@@ -359,11 +364,11 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 320px;
+      width: 300px;
       height: 100vh;
       background: var(--deep-charcoal);
       z-index: 1050;
-      padding: 100px 40px 40px 40px;
+      padding: 100px 32px 32px 32px;
       transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
@@ -376,7 +381,7 @@
 
     .mobile-drawer a {
       color: rgba(255,255,255,0.85);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 500;
       padding: 14px 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -408,12 +413,12 @@
     }
 
     /* ==========================================================================
-       2. HERO SECTION
+       2. HERO SECTION — Scalable layout
        ========================================================================== */
     .hero {
-      min-height: 100vh;
-      padding-top: 150px;
-      padding-bottom: 80px;
+      min-height: calc(100vh - 80px);
+      padding-top: clamp(120px, 14vw, 150px);
+      padding-bottom: clamp(60px, 8vw, 80px);
       display: flex;
       align-items: center;
       background: radial-gradient(circle at 75% 20%, rgba(201, 169, 110, 0.08) 0%, transparent 55%);
@@ -423,7 +428,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
+      gap: clamp(32px, 4vw, 60px);
       align-items: center;
     }
 
@@ -432,14 +437,13 @@
       z-index: 2;
     }
 
-    /* Word-by-word hero animation */
     .hero-heading {
       font-family: var(--font-heading);
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-size: clamp(2.5rem, 4.2vw, 4.2rem);
       font-weight: 600;
-      line-height: 1.08;
+      line-height: 1.1;
       color: var(--deep-charcoal);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .hero-heading .hero-word {
@@ -468,11 +472,11 @@
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: clamp(0.98rem, 1.1vw, 1.1rem);
       color: var(--text-muted);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       max-width: 520px;
-      line-height: 1.75;
+      line-height: 1.7;
       opacity: 0;
       animation: fadeUp 0.7s 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -480,9 +484,9 @@
     .hero-buttons {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 56px;
+      margin-bottom: 40px;
       opacity: 0;
       animation: fadeUp 0.7s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -501,8 +505,8 @@
     .trust-metrics {
       display: flex;
       align-items: center;
-      gap: 48px;
-      padding-top: 32px;
+      gap: clamp(24px, 3.5vw, 48px);
+      padding-top: 28px;
       border-top: 1px solid var(--border-subtle);
       opacity: 0;
       animation: fadeUp 0.7s 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -515,7 +519,7 @@
 
     .metric-number {
       font-family: var(--font-heading);
-      font-size: 2.4rem;
+      font-size: clamp(1.8rem, 2.4vw, 2.4rem);
       font-weight: 700;
       color: var(--deep-charcoal);
       line-height: 1;
@@ -526,7 +530,7 @@
     }
 
     .metric-label {
-      font-size: 0.78rem;
+      font-size: clamp(0.72rem, 0.8vw, 0.78rem);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-muted);
@@ -545,11 +549,13 @@
       box-shadow: var(--shadow-lg);
       position: relative;
       border: 1px solid rgba(255,255,255,0.3);
+      aspect-ratio: 4/3.2;
+      max-height: 480px;
     }
 
     .main-hero-img-box img {
       width: 100%;
-      height: 520px;
+      height: 100%;
       object-fit: cover;
       transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -561,44 +567,44 @@
     /* Floating Card */
     .hero-floating-card {
       position: absolute;
-      bottom: -30px;
-      left: -30px;
+      bottom: -24px;
+      left: -20px;
       background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(16px);
-      padding: 20px 24px;
+      padding: 16px 20px;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border-bronze);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       z-index: 3;
-      max-width: 280px;
+      max-width: 260px;
       opacity: 0;
       animation: fadeUp 0.6s 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .card-icon-badge {
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: var(--bronze-light);
       color: var(--bronze-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       flex-shrink: 0;
     }
 
     .card-info h4 {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--deep-charcoal);
     }
 
     .card-info p {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
@@ -608,7 +614,7 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: clamp(36px, 4.5vw, 64px);
       align-items: center;
     }
 
@@ -620,16 +626,16 @@
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-md);
       width: 85%;
-      height: 440px;
+      height: clamp(320px, 32vw, 440px);
       object-fit: cover;
     }
 
     .about-img-secondary {
       position: absolute;
-      bottom: -40px;
+      bottom: -30px;
       right: 0;
       width: 60%;
-      height: 280px;
+      height: clamp(200px, 20vw, 280px);
       object-fit: cover;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-lg);
@@ -637,16 +643,16 @@
     }
 
     .about-features {
-      margin-top: 32px;
+      margin-top: 28px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 20px;
     }
 
     .feature-point {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
     }
 
     .feature-point i {
@@ -656,13 +662,13 @@
     }
 
     .feature-point h5 {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--deep-charcoal);
     }
 
     .feature-point p {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -673,7 +679,7 @@
     .services-header {
       text-align: center;
       max-width: 640px;
-      margin: 0 auto 64px auto;
+      margin: 0 auto clamp(40px, 5vw, 64px) auto;
     }
 
     .services-header .section-desc {
@@ -682,14 +688,14 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: clamp(20px, 2.5vw, 28px);
     }
 
     .service-card {
       background-color: var(--bg-card);
       border-radius: var(--radius-md);
-      padding: 36px 28px;
+      padding: clamp(28px, 3vw, 36px) clamp(24px, 2.5vw, 28px);
       border: 1px solid var(--border-subtle);
       transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
@@ -705,16 +711,16 @@
     }
 
     .service-icon {
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
       border-radius: 12px;
       background: var(--bronze-light);
       color: var(--bronze-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 24px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
       transition: all 0.35s ease;
     }
 
@@ -726,29 +732,29 @@
 
     .service-title {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 600;
       color: var(--deep-charcoal);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .service-desc {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.65;
+      margin-bottom: 18px;
+      line-height: 1.6;
       flex-grow: 1;
     }
 
     .service-list {
       list-style: none;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border-top: 1px dashed var(--border-subtle);
-      padding-top: 16px;
+      padding-top: 14px;
     }
 
     .service-list li {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--text-main);
       margin-bottom: 8px;
       display: flex;
@@ -765,7 +771,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--bronze-hover);
       transition: var(--transition-fast);
@@ -777,11 +783,11 @@
     }
 
     /* ==========================================================================
-       5. PORTFOLIO SHOWCASE
+       5. PORTFOLIO SHOWCASE — Dark Background
        ========================================================================== */
     .portfolio-section {
       background: var(--deep-charcoal);
-      padding: 104px 0;
+      padding: clamp(64px, 7vw, 104px) 0;
     }
 
     .portfolio-section .subtitle-pill {
@@ -794,24 +800,24 @@
     }
 
     .portfolio-section .section-desc {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.65);
     }
 
     .portfolio-nav {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 48px;
+      gap: 8px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
     .filter-btn {
-      padding: 10px 24px;
+      padding: 8px 20px;
       border-radius: 4px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.12);
       background: transparent;
       transition: var(--transition-fast);
     }
@@ -824,7 +830,7 @@
 
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
     }
 
@@ -832,7 +838,7 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       position: relative;
-      height: 360px;
+      height: clamp(300px, 28vw, 360px);
       cursor: pointer;
       transition: opacity 0.35s ease;
     }
@@ -851,7 +857,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 28px;
+      padding: 24px;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -865,25 +871,25 @@
     }
 
     .portfolio-tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--bronze-accent);
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .portfolio-title {
       font-family: var(--font-heading);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       color: #FFFFFF;
       font-weight: 600;
     }
 
     .portfolio-location {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-top: 4px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 2px;
     }
 
     /* Lightbox Modal */
@@ -896,7 +902,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 40px;
+      padding: 20px;
     }
 
     .lightbox-modal.active {
@@ -904,7 +910,7 @@
     }
 
     .lightbox-content {
-      max-width: 900px;
+      max-width: 860px;
       width: 100%;
       background: var(--bg-card);
       border-radius: var(--radius-md);
@@ -917,252 +923,223 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       color: #FFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       z-index: 10;
     }
 
     .lightbox-img-wrapper img {
       width: 100%;
-      max-height: 500px;
+      max-height: 480px;
       object-fit: cover;
     }
 
     .lightbox-details {
-      padding: 24px 32px;
+      padding: 20px 28px;
     }
 
     /* ==========================================================================
-       6. INTERACTIVE BUDGET ESTIMATOR
+       6. VERTICAL TIMELINE DESIGN PROCESS (Inspired by Makespace Interior)
        ========================================================================== */
-    .estimator-section {
-      background-color: var(--bg-card-alt);
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .estimator-wrapper {
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--border-bronze);
-    }
-
-    .estimator-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .form-group-custom {
-      margin-bottom: 24px;
-    }
-
-    .form-group-custom label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--deep-charcoal);
-      margin-bottom: 10px;
-    }
-
-    .choice-chips {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      padding: 10px 20px;
-      border-radius: 4px;
-      border: 1px solid var(--border-subtle);
+    .timeline-section {
       background: var(--bg-cream);
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: var(--transition-fast);
+      overflow: hidden;
     }
 
-    .chip.selected {
-      background: var(--deep-charcoal);
-      color: #FFFFFF;
-      border-color: var(--deep-charcoal);
-    }
-
-    .range-slider-box {
-      margin-top: 12px;
-    }
-
-    .range-slider-box input[type=range] {
-      width: 100%;
-      accent-color: var(--bronze-accent);
-      height: 6px;
-    }
-
-    .estimator-result-card {
-      background: var(--bg-cream);
-      border-radius: var(--radius-md);
-      padding: 40px;
-      text-align: center;
-      border: 1px dashed var(--bronze-accent);
-    }
-
-    .estimate-value {
-      font-family: var(--font-heading);
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--bronze-hover);
-      margin: 16px 0;
-    }
-
-    .estimator-disclaimer {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: 16px;
-    }
-
-    /* ==========================================================================
-       7. DESIGN PROCESS — Horizontal Timeline
-       ========================================================================== */
-    .process-timeline {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 64px;
+    .v-timeline {
       position: relative;
+      max-width: 900px;
+      margin: 48px auto 0 auto;
+      padding: 20px 0;
     }
 
-    /* Connecting line */
-    .process-timeline::before {
-      content: '';
+    /* Animated progress line down center */
+    .v-timeline-line {
       position: absolute;
-      top: 32px;
-      left: 12.5%;
-      right: 12.5%;
-      height: 2px;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
       background: var(--mid-stone);
-      z-index: 0;
-    }
-
-    .process-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      padding: 0 16px;
-    }
-
-    .process-dot {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--bg-card);
-      border: 2px solid var(--mid-stone);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--bronze-accent);
-      margin-bottom: 24px;
+      transform: translateX(-50%);
       z-index: 1;
+    }
+
+    .v-timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--bronze-accent), var(--bronze-hover));
+      transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .v-timeline-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 56px;
+      z-index: 2;
+    }
+
+    .v-timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .v-timeline-item:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+
+    .v-timeline-content {
+      width: 44%;
+      background: var(--bg-card);
+      padding: 28px clamp(20px, 2.5vw, 32px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      position: relative;
       transition: all 0.4s ease;
     }
 
-    .process-step:hover .process-dot {
-      background: var(--bronze-accent);
-      color: #FFFFFF;
-      border-color: var(--bronze-accent);
-      transform: scale(1.1);
-      box-shadow: var(--shadow-glow);
+    .v-timeline-item.active .v-timeline-content {
+      border-color: var(--border-bronze);
+      box-shadow: var(--shadow-md);
     }
 
-    .process-title {
-      font-size: 1.05rem;
+    .v-timeline-number {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--bronze-accent);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .v-timeline-title {
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--deep-charcoal);
       margin-bottom: 8px;
     }
 
-    .process-desc {
-      font-size: 0.85rem;
+    .v-timeline-desc {
+      font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.6;
-      max-width: 220px;
+    }
+
+    /* Node badge in center */
+    .v-timeline-node {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 3px solid var(--mid-stone);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 3;
+    }
+
+    .v-timeline-item.active .v-timeline-node {
+      background: var(--bronze-accent);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 0 0 0 6px var(--bronze-light);
     }
 
     /* ==========================================================================
-       8. TESTIMONIALS — Editorial Style with Large Quotes
+       7. TESTIMONIALS CAROUSEL SLIDER (Horizontal Swipeable)
        ========================================================================== */
     .testimonials-section {
       background: var(--bg-card-alt);
     }
 
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 48px;
+    .testimonials-carousel-wrapper {
+      position: relative;
+      margin-top: 40px;
     }
 
-    .testimonial-card {
+    .testimonials-slider-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 10px 4px 24px 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .testimonials-slider-track::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    .testimonial-slide-card {
+      flex: 0 0 calc(33.333% - 16px);
+      min-width: 300px;
+      scroll-snap-align: start;
       background: var(--bg-card);
       border-radius: var(--radius-md);
-      padding: 36px 32px;
+      padding: 32px 28px;
       border: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      transition: all 0.4s ease;
+      transition: all 0.35s ease;
+      cursor: grab;
     }
 
-    .testimonial-card:hover {
+    .testimonial-slide-card:hover, .testimonial-slide-card.highlighted {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
       border-color: var(--border-bronze);
     }
 
-    /* Large decorative quote mark */
-    .testimonial-card::before {
+    .testimonial-slide-card::before {
       content: '"';
       font-family: var(--font-heading);
-      font-size: 5rem;
+      font-size: 4.5rem;
       line-height: 1;
       color: var(--bronze-accent);
-      opacity: 0.2;
+      opacity: 0.18;
       position: absolute;
-      top: 16px;
-      left: 28px;
+      top: 12px;
+      left: 24px;
       pointer-events: none;
     }
 
     .stars {
       color: var(--bronze-accent);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       font-size: 0.85rem;
       display: flex;
       gap: 3px;
     }
 
     .quote-text {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-main);
       font-style: italic;
-      line-height: 1.75;
-      margin-bottom: 24px;
+      line-height: 1.7;
+      margin-bottom: 20px;
       position: relative;
       z-index: 1;
     }
@@ -1171,13 +1148,13 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding-top: 20px;
+      padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
     }
 
     .client-avatar {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: var(--bronze-light);
       color: var(--bronze-hover);
@@ -1189,7 +1166,7 @@
     }
 
     .client-meta h5 {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--deep-charcoal);
     }
@@ -1199,20 +1176,134 @@
       color: var(--text-muted);
     }
 
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--deep-charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: var(--transition-fast);
+    }
+
+    .carousel-btn:hover {
+      background: var(--bronze-accent);
+      color: #FFFFFF;
+      border-color: var(--bronze-accent);
+    }
+
+    /* ==========================================================================
+       8. FAQS SECTION (Accordion Animation Style)
+       ========================================================================== */
+    .faq-section {
+      background: var(--bg-cream);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 40px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--border-bronze);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-header {
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-question {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--deep-charcoal);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bronze-light);
+      color: var(--bronze-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      background: var(--bronze-accent);
+      color: #FFFFFF;
+    }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      opacity: 0;
+    }
+
+    .faq-item.active .faq-body {
+      opacity: 1;
+    }
+
+    .faq-content {
+      padding: 0 28px 24px 28px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      border-top: 1px dashed var(--border-subtle);
+      margin-top: 4px;
+      padding-top: 16px;
+    }
+
     /* ==========================================================================
        9. CONTACT & CONSULTATION
        ========================================================================== */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 48px;
+      gap: clamp(32px, 4vw, 48px);
     }
 
     .contact-info-box {
       background: var(--deep-charcoal);
       color: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 48px;
+      padding: clamp(32px, 4vw, 48px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1225,44 +1316,44 @@
 
     .contact-info-box h3 {
       font-family: var(--font-heading);
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 2.5vw, 2.2rem);
       font-weight: 600;
       color: #FFFFFF;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .contact-info-box > div:first-child > p {
       color: rgba(255, 255, 255, 0.65);
-      margin-bottom: 36px;
-      font-size: 0.95rem;
+      margin-bottom: 32px;
+      font-size: 0.92rem;
     }
 
     .contact-details-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     .detail-item {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
     }
 
     .detail-item i {
       color: var(--bronze-accent);
-      font-size: 1.2rem;
-      margin-top: 4px;
+      font-size: 1.15rem;
+      margin-top: 3px;
     }
 
     .detail-item h5 {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #FFFFFF;
     }
 
     .detail-item p {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: rgba(255, 255, 255, 0.65);
       margin-bottom: 0;
     }
@@ -1270,7 +1361,7 @@
     .contact-form-card {
       background: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 48px;
+      padding: clamp(32px, 4vw, 48px);
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border-subtle);
     }
@@ -1278,29 +1369,29 @@
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 16px;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--deep-charcoal);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .form-control {
       width: 100%;
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-subtle);
       background: var(--bg-cream);
       font-family: inherit;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--text-main);
       transition: var(--transition-fast);
     }
@@ -1314,14 +1405,14 @@
 
     textarea.form-control {
       resize: vertical;
-      min-height: 120px;
+      min-height: 110px;
     }
 
     /* Form success state */
     .form-success {
       display: none;
       text-align: center;
-      padding: 48px 24px;
+      padding: 40px 20px;
     }
 
     .form-success.active {
@@ -1330,21 +1421,21 @@
     }
 
     .form-success .success-icon {
-      width: 72px;
-      height: 72px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: var(--bronze-light);
       color: var(--bronze-accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      margin: 0 auto 24px auto;
+      font-size: 1.8rem;
+      margin: 0 auto 20px auto;
     }
 
     .form-success h4 {
       font-family: var(--font-heading);
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 600;
       color: var(--deep-charcoal);
       margin-bottom: 8px;
@@ -1352,17 +1443,17 @@
 
     .form-success p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     /* Toast notification */
     .toast {
       position: fixed;
       bottom: 30px;
-      right: 30px;
+      left: 30px;
       background: var(--deep-charcoal);
       color: #FFF;
-      padding: 16px 28px;
+      padding: 14px 24px;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-lg);
       display: flex;
@@ -1386,15 +1477,15 @@
     .footer {
       background: var(--deep-charcoal);
       color: rgba(255, 255, 255, 0.65);
-      padding: 80px 0 30px 0;
+      padding: clamp(60px, 7vw, 80px) 0 30px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
+      gap: 36px;
+      margin-bottom: 48px;
     }
 
     .footer-brand .brand-name {
@@ -1402,16 +1493,16 @@
     }
 
     .footer-brand p {
-      margin-top: 16px;
-      font-size: 0.88rem;
-      line-height: 1.7;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      line-height: 1.65;
     }
 
     .footer-col h4 {
       color: #FFFFFF;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .footer-links {
@@ -1419,11 +1510,11 @@
     }
 
     .footer-links li {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .footer-links a {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       transition: var(--transition-fast);
     }
 
@@ -1432,17 +1523,17 @@
     }
 
     .footer-bottom {
-      padding-top: 30px;
+      padding-top: 24px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
     }
 
     .social-links {
       display: flex;
-      gap: 12px;
+      gap: 10px;
     }
 
     .social-icon {
@@ -1462,11 +1553,11 @@
       color: #FFFFFF;
     }
 
-    /* Floating WhatsApp Button */
+    /* Floating WhatsApp Button — MOVED TO BOTTOM RIGHT */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
-      left: 30px;
+      right: 30px;
       width: 56px;
       height: 56px;
       background: #25D366;
@@ -1506,8 +1597,6 @@
     .stagger-children .reveal-up:nth-child(2) { transition-delay: 0.12s; }
     .stagger-children .reveal-up:nth-child(3) { transition-delay: 0.19s; }
     .stagger-children .reveal-up:nth-child(4) { transition-delay: 0.26s; }
-    .stagger-children .reveal-up:nth-child(5) { transition-delay: 0.33s; }
-    .stagger-children .reveal-up:nth-child(6) { transition-delay: 0.40s; }
 
     /* ==========================================================================
        ACCESSIBILITY — Reduced Motion
@@ -1529,22 +1618,28 @@
     }
 
     /* ==========================================================================
-       RESPONSIVE BREAKPOINTS
+       RESPONSIVE BREAKPOINTS (Enhanced for 100% zoom scaling)
        ========================================================================== */
     @media (max-width: 1024px) {
-      .hero-grid, .about-grid, .estimator-grid, .contact-grid {
+      .hero-grid, .about-grid, .contact-grid {
         grid-template-columns: 1fr;
         gap: 40px;
       }
-      .services-grid, .portfolio-grid, .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .v-timeline-line {
+        left: 28px;
       }
-      .process-timeline {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+      .v-timeline-item {
+        flex-direction: row !important;
+        padding-left: 60px;
       }
-      .process-timeline::before {
-        display: none;
+      .v-timeline-content {
+        width: 100%;
+      }
+      .v-timeline-node {
+        left: 28px;
+      }
+      .testimonial-slide-card {
+        flex: 0 0 calc(50% - 12px);
       }
       .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -1553,7 +1648,7 @@
 
     @media (max-width: 768px) {
       .section {
-        padding: 72px 0;
+        padding: 60px 0;
       }
       .nav-menu {
         display: none;
@@ -1564,12 +1659,8 @@
       .mobile-toggle {
         display: block;
       }
-      .services-grid, .portfolio-grid, .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-      .process-timeline {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      .testimonial-slide-card {
+        flex: 0 0 100%;
       }
       .footer-grid {
         grid-template-columns: 1fr;
@@ -1577,38 +1668,23 @@
       .form-row {
         grid-template-columns: 1fr;
       }
-      .estimator-wrapper {
-        padding: 24px;
-      }
       .hero-floating-card {
         bottom: 10px;
         left: 10px;
       }
       .hero {
-        padding-top: 120px;
-      }
-      .hero-heading {
-        font-size: clamp(2.2rem, 8vw, 3rem);
+        padding-top: 110px;
       }
       .trust-metrics {
-        gap: 24px;
-      }
-      .metric-number {
-        font-size: 1.8rem;
+        gap: 20px;
       }
       .about-features {
         grid-template-columns: 1fr;
       }
       .footer-bottom {
         flex-direction: column;
-        gap: 16px;
+        gap: 14px;
         text-align: center;
-      }
-      .contact-info-box {
-        padding: 32px;
-      }
-      .contact-form-card {
-        padding: 32px;
       }
     }
   </style>
@@ -1633,8 +1709,9 @@
           <li><a href="#about" class="nav-link">Studio Story</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#estimator" class="nav-link">Budget Estimator</a></li>
           <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+          <li><a href="#faqs" class="nav-link">FAQs</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
@@ -1643,7 +1720,7 @@
             <i class="fa-solid fa-phone"></i>
             <span>+91 84013 46916</span>
           </a>
-          <a href="#contact" class="btn btn-charcoal" style="padding: 10px 22px; font-size: 0.82rem;">Book Free Visit</a>
+          <a href="#contact" class="btn btn-charcoal" style="padding: 10px 20px; font-size: 0.82rem;">Book Free Visit</a>
           <div class="mobile-toggle" id="mobileToggle">
             <i class="fa-solid fa-bars"></i>
           </div>
@@ -1658,8 +1735,9 @@
     <a href="#about" class="drawer-link">Studio Story</a>
     <a href="#services" class="drawer-link">Services</a>
     <a href="#portfolio" class="drawer-link">Portfolio</a>
-    <a href="#estimator" class="drawer-link">Budget Estimator</a>
     <a href="#process" class="drawer-link">Our Process</a>
+    <a href="#testimonials" class="drawer-link">Reviews</a>
+    <a href="#faqs" class="drawer-link">FAQs</a>
     <a href="#contact" class="drawer-link">Contact</a>
     <div class="drawer-cta">
       <a href="#contact" class="btn btn-primary" style="width: 100%;">Book Free Site Visit</a>
@@ -1958,167 +2036,259 @@
   </div>
 
   <!-- ==========================================================================
-       6. INTERACTIVE BUDGET ESTIMATOR
+       6. VERTICAL TIMELINE SECTION (Inspired by Makespace Interior)
        ========================================================================== -->
-  <section class="section estimator-section" id="estimator">
-    <div class="container">
-      <div class="estimator-wrapper reveal-up">
-        <div class="estimator-grid">
-          <div>
-            <div class="subtitle-pill"><i class="fa-solid fa-calculator"></i> Instant Transparency</div>
-            <h2 class="section-title">Interior Budget <span>Estimator</span></h2>
-            <p class="section-desc" style="margin-bottom: 32px;">
-              Select your property type, finish preference, and desired services to get an instant cost range for your interior journey in Raipur.
-            </p>
-
-            <div class="form-group-custom">
-              <label>1. Select Property Configuration:</label>
-              <div class="choice-chips" id="propertyChips">
-                <div class="chip selected" data-value="2bhk">2 BHK Flat</div>
-                <div class="chip" data-value="3bhk">3 BHK Flat</div>
-                <div class="chip" data-value="villa">Independent Villa</div>
-                <div class="chip" data-value="commercial">Commercial Space</div>
-              </div>
-            </div>
-
-            <div class="form-group-custom">
-              <label>2. Choose Finish Grade:</label>
-              <div class="choice-chips" id="finishChips">
-                <div class="chip" data-value="standard">Standard (Clean & Modular)</div>
-                <div class="chip selected" data-value="premium">Premium (PVC Marble & Acrylic)</div>
-                <div class="chip" data-value="luxury">Luxury (Full Italian Look & Veneer)</div>
-              </div>
-            </div>
-
-            <div class="form-group-custom">
-              <label>3. Approximate Carpet Area: <span id="areaLabel" style="color: var(--bronze-hover); font-weight:700;">1,200 sq.ft</span></label>
-              <div class="range-slider-box">
-                <input type="range" id="areaSlider" min="500" max="4000" step="50" value="1200">
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="estimator-result-card">
-              <h4 style="font-size: 1.05rem; color: var(--deep-charcoal); font-weight:600;">Estimated Project Investment</h4>
-              <div class="estimate-value" id="estimateOutput">₹ 4.8 - 6.2 Lakhs</div>
-              <p style="font-size: 0.88rem; color: var(--text-main); font-weight:500;">Includes Material, Installation & 3D Spatial Supervision</p>
-              <div style="margin-top: 24px;">
-                <a href="#contact" class="btn btn-primary" style="width: 100%;">
-                  Lock In This Quote <i class="fa-solid fa-lock"></i>
-                </a>
-              </div>
-              <p class="estimator-disclaimer">
-                *Estimated ranges are indicative based on Raipur market rates for 2026. Final proposal issued post site measurement at Raipura Chowk studio.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       7. DESIGN PROCESS — Horizontal Timeline
-       ========================================================================== -->
-  <section class="section" id="process">
+  <section class="section timeline-section" id="process">
     <div class="container">
       <div class="services-header reveal-up">
-        <div class="subtitle-pill">How We Work</div>
-        <h2 class="section-title">4 Simple Steps to <span>Your Dream Interior</span></h2>
-        <p class="section-desc">Our streamlined 4-step workflow ensures zero surprises, strict deadline tracking, and pristine craftsmanship.</p>
+        <div class="subtitle-pill"><i class="fa-solid fa-route"></i> Turnkey Journey</div>
+        <h2 class="section-title">Our Architectural <span>Execution Process</span></h2>
+        <p class="section-desc">From initial site measurement in Raipur to photorealistic 3D renders and final handover, experience complete transparency every step of the way.</p>
       </div>
 
-      <div class="process-timeline stagger-children">
-        <div class="process-step reveal-up">
-          <div class="process-dot">01</div>
-          <h4 class="process-title">Site Measurement</h4>
-          <p class="process-desc">Our lead designer visits your site in Raipur to measure dimensions and study light & ventilation flow.</p>
+      <div class="v-timeline" id="vTimeline">
+        <div class="v-timeline-line">
+          <div class="v-timeline-progress" id="timelineProgress"></div>
         </div>
 
-        <div class="process-step reveal-up">
-          <div class="process-dot">02</div>
-          <h4 class="process-title">3D Visualization</h4>
-          <p class="process-desc">We generate photorealistic 3D renders of your living room, kitchen & false ceiling before work begins.</p>
+        <div class="v-timeline-item reveal-up">
+          <div class="v-timeline-node"><i class="fa-solid fa-ruler-combined"></i></div>
+          <div class="v-timeline-content">
+            <span class="v-timeline-number">STEP 01</span>
+            <h4 class="v-timeline-title">Discovery & Site Audit</h4>
+            <p class="v-timeline-desc">Our lead designer visits your residence or office in Raipur to measure exact spatial dimensions, study natural light angles, and discuss Vastu layout preferences.</p>
+          </div>
         </div>
 
-        <div class="process-step reveal-up">
-          <div class="process-dot">03</div>
-          <h4 class="process-title">Material Curation</h4>
-          <p class="process-desc">Select wallpapers, PVC marble sheets, acrylic laminates, and hardware at our Raipura Chowk studio.</p>
+        <div class="v-timeline-item reveal-up">
+          <div class="v-timeline-node"><i class="fa-solid fa-cubes"></i></div>
+          <div class="v-timeline-content">
+            <span class="v-timeline-number">STEP 02</span>
+            <h4 class="v-timeline-title">3D Renders & Material Selection</h4>
+            <p class="v-timeline-desc">Experience your future interior with 3D renders. Choose wallpapers, PVC marble sheets, fluted louvers, and acrylic finishes directly at our Raipura Chowk studio.</p>
+          </div>
         </div>
 
-        <div class="process-step reveal-up">
-          <div class="process-dot">04</div>
-          <h4 class="process-title">Turnkey Handover</h4>
-          <p class="process-desc">Our master technicians complete fitting, cove light wiring, and cleaning for a seamless move-in.</p>
+        <div class="v-timeline-item reveal-up">
+          <div class="v-timeline-node"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="v-timeline-content">
+            <span class="v-timeline-number">STEP 03</span>
+            <h4 class="v-timeline-title">Precision Fabrication & Fitments</h4>
+            <p class="v-timeline-desc">Factory-finished soft-close modular joinery, false ceiling framework, and surface paneling are prepared with precision craftsmanship and zero quality compromise.</p>
+          </div>
+        </div>
+
+        <div class="v-timeline-item reveal-up">
+          <div class="v-timeline-node"><i class="fa-solid fa-key"></i></div>
+          <div class="v-timeline-content">
+            <span class="v-timeline-number">STEP 04</span>
+            <h4 class="v-timeline-title">Turnkey Installation & Handover</h4>
+            <p class="v-timeline-desc">Our master technicians complete seamless fitting, magnetic track light wiring, deep cleaning, and deliver your dream home on the exact promised date.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       8. TESTIMONIALS — Editorial Style
+       7. TESTIMONIALS CAROUSEL SLIDER (Horizontal Swipeable)
        ========================================================================== -->
   <section class="section testimonials-section" id="testimonials">
     <div class="container">
       <div class="services-header reveal-up">
         <div class="subtitle-pill">Client Testimonials</div>
         <h2 class="section-title">Trusted by Homeowners Across <span>Raipur</span></h2>
-        <p class="section-desc">Read real experiences from families who transformed their living spaces with Hanu Interio.</p>
+        <p class="section-desc">Swipe horizontally to read verified stories from clients who elevated their living spaces with Hanu Interio.</p>
       </div>
 
-      <div class="testimonials-grid stagger-children">
-        <div class="testimonial-card reveal-up">
-          <div>
-            <div class="stars">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+      <div class="testimonials-carousel-wrapper reveal-up">
+        <div class="testimonials-slider-track" id="testimonialTrack">
+          <div class="testimonial-slide-card highlighted">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "Hanu Interio completely changed the look of our VIP Road flat. The PVC marble wall paneling behind our TV unit looks indistinguishable from real Italian marble. Highly professional work!"
+              </p>
             </div>
-            <p class="quote-text">
-              "Hanu Interio completely changed the look of our VIP Road flat. The PVC marble wall paneling behind our TV unit looks indistinguishable from real Italian marble. Very polite team!"
-            </p>
+            <div class="client-info">
+              <div class="client-avatar">AK</div>
+              <div class="client-meta">
+                <h5>Anand Khandelwal</h5>
+                <p>VIP Road, Raipur • Living Room & Wall Architecture</p>
+              </div>
+            </div>
           </div>
-          <div class="client-info">
-            <div class="client-avatar">AK</div>
-            <div class="client-meta">
-              <h5>Anand Khandelwal</h5>
-              <p>VIP Road, Raipur</p>
+
+          <div class="testimonial-slide-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "The modular acrylic kitchen they built for our home in Shankar Nagar is so easy to clean! Blum soft-close drawers work effortlessly. Delivered on the exact promised date."
+              </p>
+            </div>
+            <div class="client-info">
+              <div class="client-avatar">PM</div>
+              <div class="client-meta">
+                <h5>Pooja Mishra</h5>
+                <p>Shankar Nagar, Raipur • Acrylic Modular Kitchen</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "Great experience with false ceiling installation and magnetic track lights in Devendra Nagar. Highly recommend their designer wallpaper selection as well!"
+              </p>
+            </div>
+            <div class="client-info">
+              <div class="client-avatar">RS</div>
+              <div class="client-meta">
+                <h5>Rajesh Sahu</h5>
+                <p>Devendra Nagar, Durg • False Ceiling & Lighting</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide-card highlighted">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "Their fluted louver wall panels transformed our Chouhan Town villa foyer into a luxury lounge. Clean site work, punctual technicians, and fair pricing."
+              </p>
+            </div>
+            <div class="client-info">
+              <div class="client-avatar">VS</div>
+              <div class="client-meta">
+                <h5>Vikas Sharma</h5>
+                <p>Chouhan Town, Bhilai • Full Villa Turnkey</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "Hanu Interio designed our boutique studio reception in Tatibandh. The acoustic wall paneling and warm cove lighting received immense praise from our clients."
+              </p>
+            </div>
+            <div class="client-info">
+              <div class="client-avatar">SG</div>
+              <div class="client-meta">
+                <h5>Sneh Gupta</h5>
+                <p>Tatibandh, Raipur • Commercial Executive Studio</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide-card">
+            <div>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="quote-text">
+                "From initial 3D design to sliding glass wardrobe fitting in Sadar Bazaar, their attention to detail was exceptional. Truly Raipur's best interior team!"
+              </p>
+            </div>
+            <div class="client-info">
+              <div class="client-avatar">NS</div>
+              <div class="client-meta">
+                <h5>Nikhil Sen</h5>
+                <p>Sadar Bazaar, Raipur • Master Bedroom Suite</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card reveal-up">
-          <div>
-            <div class="stars">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="quote-text">
-              "The modular acrylic kitchen they built for our home in Shankar Nagar is so easy to clean! Soft close drawers work effortlessly. Delivered on exact promised date."
-            </p>
+        <!-- Carousel Navigation Arrows -->
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevSlide" aria-label="Previous Testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn" id="nextSlide" aria-label="Next Testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. FAQS SECTION (Accordion Animation Style)
+       ========================================================================== -->
+  <section class="section faq-section" id="faqs">
+    <div class="container">
+      <div class="services-header reveal-up">
+        <div class="subtitle-pill"><i class="fa-solid fa-circle-question"></i> Answers & Guidance</div>
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+        <p class="section-desc">Got questions about our interior design workflow, material durability, or timeline in Raipur? We have answers.</p>
+      </div>
+
+      <div class="faq-container reveal-up">
+        <div class="faq-item active">
+          <div class="faq-header">
+            <h4 class="faq-question">What areas in Chhattisgarh do you cover for site visits & turnkey execution?</h4>
+            <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
           </div>
-          <div class="client-info">
-            <div class="client-avatar">PM</div>
-            <div class="client-meta">
-              <h5>Pooja Mishra</h5>
-              <p>Shankar Nagar, Raipur</p>
+          <div class="faq-body" style="max-height: 200px; opacity: 1;">
+            <div class="faq-content">
+              Our main interior design studio is situated at Raipura Chowk, Mahadev Ghat Road, Raipur. We regularly service residential and commercial projects across Raipur (VIP Road, Shankar Nagar, Devendra Nagar, Sadar Bazaar, Tatibandh), Bhilai, Durg, and surrounding regions in Chhattisgarh.
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card reveal-up">
-          <div>
-            <div class="stars">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="quote-text">
-              "Great experience with false ceiling installation and magnetic track lights in Devendra Nagar. Highly recommend their wallpaper selection as well!"
-            </p>
+        <div class="faq-item">
+          <div class="faq-header">
+            <h4 class="faq-question">Is the initial site visit and design consultation free?</h4>
+            <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
           </div>
-          <div class="client-info">
-            <div class="client-avatar">RS</div>
-            <div class="client-meta">
-              <h5>Rajesh Sahu</h5>
-              <p>Devendra Nagar, Durg</p>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes! We provide complimentary initial site measurements and design consultations across Raipur. Our lead spatial designer visits your site to understand requirements before presenting a tailored scope of work.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <h4 class="faq-question">What is the advantage of PVC Marble sheets & Fluted Louvers over real marble?</h4>
+            <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              PVC Marble sheets and timber fluted louvers offer 100% termite proof, moisture-resistant, lightweight, and economical alternatives to heavy Italian marble and wood. They are installed in 1-2 days without messy wet civil work, creating instant high-gloss feature walls.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <h4 class="faq-question">Do you provide 3D visualization renders before starting physical work?</h4>
+            <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Absolutely. We craft photorealistic 3D spatial renders of your living room, modular kitchen, master bedroom, and false ceiling lighting layout so you can preview colors, finishes, and spatial fitment prior to execution.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header">
+            <h4 class="faq-question">How long does a full home turnkey interior project typically take?</h4>
+            <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Depending on scope (e.g., modular kitchen + PVC wall paneling vs full 3BHK turnkey fitment), most projects in Raipur are completed between 18 to 35 working days. We adhere strictly to agreed handover schedules.
             </div>
           </div>
         </div>
@@ -2173,7 +2343,7 @@
         </div>
 
         <div class="contact-form-card reveal-up">
-          <h3 class="section-title" style="font-size: 2rem; margin-bottom: 24px;">Request <span>Free Site Visit</span></h3>
+          <h3 class="section-title" style="font-size: 1.8rem; margin-bottom: 24px;">Request <span>Free Site Visit</span></h3>
           <form id="contactForm">
             <div class="form-row">
               <div class="form-group">
@@ -2233,7 +2403,7 @@
     </div>
   </div>
 
-  <!-- Floating WhatsApp Button -->
+  <!-- Floating WhatsApp Button — MOVED TO BOTTOM RIGHT -->
   <a href="https://wa.me/918401346916?text=Hi%20Hanu%20Interio,%20I%20would%20like%20to%20book%20a%20free%20interior%20consultation." target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
@@ -2264,7 +2434,8 @@
             <li><a href="#about">Studio Story</a></li>
             <li><a href="#services">Our Services</a></li>
             <li><a href="#portfolio">Featured Portfolio</a></li>
-            <li><a href="#estimator">Budget Estimator</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#faqs">FAQs</a></li>
           </ul>
         </div>
 
@@ -2330,7 +2501,7 @@
         });
       });
 
-      // 3. IntersectionObserver Scroll Reveal with Stagger
+      // 3. IntersectionObserver Scroll Reveal
       const revealElements = document.querySelectorAll('.reveal-up');
       const observerOptions = {
         threshold: 0.12,
@@ -2352,12 +2523,10 @@
       const heroHeading = document.getElementById('heroHeading');
       if (heroHeading) {
         const originalHTML = heroHeading.innerHTML;
-        // Process main text and accent line separately
         const parts = originalHTML.split(/<span class="hero-accent-line">/);
         let wordIndex = 0;
         let newHTML = '';
 
-        // Process first part (before accent line)
         const words1 = parts[0].trim().split(/\s+/);
         words1.forEach(word => {
           const delay = 0.3 + wordIndex * 0.1;
@@ -2365,7 +2534,6 @@
           wordIndex++;
         });
 
-        // Process accent line
         if (parts[1]) {
           const accentText = parts[1].replace('</span>', '');
           const words2 = accentText.trim().split(/\s+/);
@@ -2398,7 +2566,6 @@
               function updateCounter(now) {
                 const elapsed = now - start;
                 const progress = Math.min(elapsed / duration, 1);
-                // Ease out cubic
                 const eased = 1 - Math.pow(1 - progress, 3);
                 const current = target * eased;
 
@@ -2478,62 +2645,76 @@
         }
       });
 
-      // 8. Interactive Budget Estimator Calculator
-      const propertyChips = document.querySelectorAll('#propertyChips .chip');
-      const finishChips = document.querySelectorAll('#finishChips .chip');
-      const areaSlider = document.getElementById('areaSlider');
-      const areaLabel = document.getElementById('areaLabel');
-      const estimateOutput = document.getElementById('estimateOutput');
+      // 8. Vertical Timeline Progress Line Animation
+      const vTimeline = document.getElementById('vTimeline');
+      const timelineProgress = document.getElementById('timelineProgress');
+      const timelineItems = document.querySelectorAll('.v-timeline-item');
 
-      let selectedProperty = '2bhk';
-      let selectedFinish = 'premium';
+      window.addEventListener('scroll', () => {
+        if (!vTimeline) return;
+        const rect = vTimeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          const totalHeight = rect.height;
+          const currentScroll = windowHeight - rect.top;
+          let progressPercent = (currentScroll / totalHeight) * 100;
+          progressPercent = Math.min(Math.max(progressPercent, 0), 100);
+          timelineProgress.style.height = `${progressPercent}%`;
 
-      propertyChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-          propertyChips.forEach(c => c.classList.remove('selected'));
-          chip.classList.add('selected');
-          selectedProperty = chip.getAttribute('data-value');
-          calculateEstimate();
+          timelineItems.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            if (itemRect.top < windowHeight * 0.75) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+
+      // 9. Testimonials Horizontal Swipeable Carousel Controls
+      const track = document.getElementById('testimonialTrack');
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+
+      if (track && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          track.scrollBy({ left: -340, behavior: 'smooth' });
         });
-      });
-
-      finishChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-          finishChips.forEach(c => c.classList.remove('selected'));
-          chip.classList.add('selected');
-          selectedFinish = chip.getAttribute('data-value');
-          calculateEstimate();
+        nextBtn.addEventListener('click', () => {
+          track.scrollBy({ left: 340, behavior: 'smooth' });
         });
-      });
-
-      areaSlider.addEventListener('input', (e) => {
-        areaLabel.textContent = `${Number(e.target.value).toLocaleString('en-IN')} sq.ft`;
-        calculateEstimate();
-      });
-
-      function calculateEstimate() {
-        const area = Number(areaSlider.value);
-        let ratePerSqFt = 400;
-
-        if (selectedFinish === 'standard') ratePerSqFt = 350;
-        if (selectedFinish === 'premium') ratePerSqFt = 520;
-        if (selectedFinish === 'luxury') ratePerSqFt = 750;
-
-        let factor = 1.0;
-        if (selectedProperty === '3bhk') factor = 1.1;
-        if (selectedProperty === 'villa') factor = 1.25;
-        if (selectedProperty === 'commercial') factor = 0.9;
-
-        const baseTotal = area * ratePerSqFt * factor;
-        const minLakhs = (baseTotal * 0.9 / 100000).toFixed(1);
-        const maxLakhs = (baseTotal * 1.15 / 100000).toFixed(1);
-
-        estimateOutput.textContent = `₹ ${minLakhs} - ${maxLakhs} Lakhs`;
       }
 
-      calculateEstimate();
+      // 10. FAQ Accordion Animation Handler
+      const faqItems = document.querySelectorAll('.faq-item');
 
-      // 9. Contact Form with Success State
+      faqItems.forEach(item => {
+        const header = item.querySelector('.faq-header');
+        const body = item.querySelector('.faq-body');
+
+        header.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+
+          // Close all open FAQs
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+            const otherBody = otherItem.querySelector('.faq-body');
+            if (otherBody) {
+              otherBody.style.maxHeight = '0px';
+              otherBody.style.opacity = '0';
+            }
+          });
+
+          // If clicked item was not active, open it
+          if (!isActive) {
+            item.classList.add('active');
+            body.style.maxHeight = body.scrollHeight + 'px';
+            body.style.opacity = '1';
+          }
+        });
+      });
+
+      // 11. Contact Form Submission Handler
       const contactForm = document.getElementById('contactForm');
       const formSuccess = document.getElementById('formSuccess');
       const toast = document.getElementById('toast');
@@ -2541,7 +2722,6 @@
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Fade out form, show success
         contactForm.style.opacity = '0';
         contactForm.style.transition = 'opacity 0.4s ease';
 
@@ -2550,14 +2730,13 @@
           formSuccess.classList.add('active');
         }, 400);
 
-        // Also show toast
         toast.classList.add('show');
         setTimeout(() => {
           toast.classList.remove('show');
         }, 4500);
       });
 
-      // 10. Keyboard: Escape to close lightbox/drawer
+      // 12. Keyboard Escape Handler
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           if (lightboxModal.classList.contains('active')) {
