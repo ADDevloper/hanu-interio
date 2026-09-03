@@ -1646,9 +1646,15 @@
       }
     }
 
+    /* Header specific button style */
+    .header-btn {
+      padding: 10px 20px;
+      font-size: 0.82rem;
+    }
+
     @media (max-width: 768px) {
       .section {
-        padding: 60px 0;
+        padding: 56px 0;
       }
       .nav-menu {
         display: none;
@@ -1658,6 +1664,31 @@
       }
       .mobile-toggle {
         display: block;
+        padding: 4px;
+      }
+      .nav-wrapper {
+        gap: 8px;
+      }
+      .brand-name {
+        font-size: 1.1rem;
+      }
+      .brand-subtitle {
+        font-size: 0.5rem;
+        letter-spacing: 0.12em;
+      }
+      .logo-mark {
+        width: 32px;
+        height: 32px;
+        font-size: 1.05rem;
+      }
+      .nav-actions {
+        gap: 6px;
+      }
+      .header-btn {
+        padding: 8px 12px !important;
+        font-size: 0.76rem !important;
+        letter-spacing: 0;
+        white-space: nowrap;
       }
       .testimonial-slide-card {
         flex: 0 0 100%;
@@ -1673,10 +1704,10 @@
         left: 10px;
       }
       .hero {
-        padding-top: 110px;
+        padding-top: 100px;
       }
       .trust-metrics {
-        gap: 20px;
+        gap: 16px;
       }
       .about-features {
         grid-template-columns: 1fr;
@@ -1685,6 +1716,20 @@
         flex-direction: column;
         gap: 14px;
         text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-buttons .btn {
+        width: 100%;
+      }
+      .header-btn {
+        padding: 6px 10px !important;
+        font-size: 0.72rem !important;
       }
     }
   </style>
@@ -1720,7 +1765,7 @@
             <i class="fa-solid fa-phone"></i>
             <span>+91 84013 46916</span>
           </a>
-          <a href="#contact" class="btn btn-charcoal" style="padding: 10px 20px; font-size: 0.82rem;">Book Free Visit</a>
+          <a href="#contact" class="btn btn-charcoal header-btn">Book Free Visit</a>
           <div class="mobile-toggle" id="mobileToggle">
             <i class="fa-solid fa-bars"></i>
           </div>
